@@ -10,6 +10,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  BUILD_PATH: "."
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,6 +34,11 @@ jobs:
 
       - name: Build VuePress
         run: pnpm docs:build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.BUILD_PATH }}/dist
 
   deploy:
     environment:
