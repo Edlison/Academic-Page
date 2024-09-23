@@ -1,0 +1,7 @@
+# System
+.vscode
+.temp
+.cache
+
+# Project
+node_modules
