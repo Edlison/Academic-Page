@@ -1,0 +1,25 @@
+---
+import Home from '../layouts/home.astro';
+import {MDXComponents} from '../components/mdx';
+import ContactContent from '../content/home/contact.mdx';
+import BioContent from '../content/home/bio.mdx';
+import NewsContent from '../content/home/news.mdx';
+import PubsContent from '../content/home/pubs.mdx';
+import InfoCard from '../components/info.astro';
+---
+
+<Home>
+    <div slot="contact">
+        <ContactContent components={ MDXComponents } />
+    </div>
+    <div slot="bio">
+        <BioContent components={ MDXComponents } />
+    </div>
+    <div slot="news">
+        <!-- <InfoCard title="Important" msg="This is important message!" /> -->
+        <NewsContent components={ MDXComponents } />
+    </div>
+    <div slot="pubs">
+        <PubsContent components={ MDXComponents } />
+    </div>
+</Home>

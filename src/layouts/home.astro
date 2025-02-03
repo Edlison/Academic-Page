@@ -1,0 +1,67 @@
+---
+import Base from "./base.astro";
+---
+
+<Base>
+  <div class="max-w-screen-lg mx-auto px-4 sm:px-6 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Left Section: Avatar and Contact Info -->
+      <div class="flex flex-col items-center md:items-start space-y-4">
+        <div class="w-32 h-40 overflow-hidden rounded-lg shadow-black relative">
+          <img src="/people.jpg" alt="Avatar" class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <slot name="contact" />
+        </div>
+      </div>
+      
+      <!-- Middle Section: Bio -->
+      <div class="col-span-2">
+        <h2 class="text-2xl font-bold mb-4">Bio</h2>
+        <div>
+          <slot name="bio" />
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="border-t border-gray-300 my-8"></div> -->
+
+    <!-- Bottom Section: News -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold mb-4">News</h2>
+      <ul class="space-y-2 list-disc list-inside">
+        <slot name="news" />
+      </ul>
+    </div>
+
+    <!-- <div class="border-t border-gray-300 my-8"></div> -->
+
+    <!-- Publications -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold mb-4">Publications</h2>
+      <ul class="space-y-2 list-disc list-inside">
+        <slot name="pubs" />
+      </ul>
+    </div>
+  </div>
+</Base>
+
+<!-- <script>
+import { annotate, annotationGroup } from "rough-notation";
+const notions = document.querySelectorAll("span[data-notion-identity]");
+const annotations = new Array(notions.length).fill(0).map((_, index) => {
+    const node = notions[index] as HTMLSpanElement;
+    const type = node.dataset.notionType;
+    const color = node.dataset.notionColor;
+    const strokeWidth = node.dataset.notionStrokewidth;
+    return annotate(node, {
+    type: (type as "underline") ?? "underline",
+    color: color ?? "red",
+    animate: false,
+    multiline: type === "bracket" ? false : true,
+    brackets: ["left", "right"],
+    strokeWidth: Number(strokeWidth) ?? 1.5,
+    });
+});
+annotationGroup(annotations).show();
+</script> -->

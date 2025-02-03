@@ -1,20 +1,22 @@
 {
-  "name": "Academic-Page",
+  "name": "blshen-academic-page",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "@astrojs/mdx": "^4.0.8",
+    "@astrojs/sitemap": "^3.2.1",
+    "@tailwindcss/vite": "^4.0.3",
+    "astro": "^5.2.3"
+  },
   "devDependencies": {
-    "@vuepress/bundler-vite": "2.0.0-rc.15",
-    "@vuepress/theme-default": "2.0.0-rc.49",
-    "sass-embedded": "^1.79.3",
-    "vue": "^3.5.8",
-    "vuepress": "2.0.0-rc.15"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.3"
   }
 }

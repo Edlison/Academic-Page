@@ -1,0 +1,33 @@
+---
+interface Props {
+  name: string;
+  conference: string;
+  authors: string;
+  pdfUrl?: string;
+  codeUrl?: string;
+}
+
+const { name, conference, authors, pdfUrl = "https://blshen.org", codeUrl = "https://github.com/edlison" } = Astro.props;
+let formattedAuthors = authors;
+if (authors.includes("Bolin Shen")) {
+  formattedAuthors = authors.replace("Bolin Shen", `<strong>Bolin Shen</strong>`);
+}
+---
+
+<div class="bg-white p-6 max-w-4xl mx-auto">
+  <h2 class="text-xl font-semibold text-gray-900">{name}</h2>
+  <div class="flex items-center text-sm mt-1 link-invert">
+    <p class="text-gray-500 italic mr-4">{conference}</p>
+    <a href={pdfUrl} target="_blank" rel="noopener noreferrer"
+      class="px-2.5 py-1 rounded-lg text-xs text-slate-500 font-medium !bg-gray-200/80 capitalize mr-2">
+      PDF
+    </a>
+    <a href={codeUrl} target="_blank" rel="noopener noreferrer"
+      class="px-2.5 py-1 rounded-lg text-xs text-slate-500 font-medium !bg-gray-200/80 capitalize mr-2">
+      Code
+    </a>
+  </div>
+  <p class="text-gray-700 text-sm mt-2" set:html={formattedAuthors}></p>
+</div>
+
+<div class="border-t border-gray-300 my-6"></div>
