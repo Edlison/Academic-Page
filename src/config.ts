@@ -18,4 +18,4 @@ export const MENUS = [
 
 export const FOOTER_CONTENT = "Built with ❤️ by Bolin Shen";
 
-export const GOOGLE_GTAG = "G-XXXXXXXXXX";
+export const GOOGLE_GTAG = "G-ET18GF988R";
