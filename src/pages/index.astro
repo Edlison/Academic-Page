@@ -5,6 +5,7 @@ import ContactContent from '../content/home/contact.mdx';
 import BioContent from '../content/home/bio.mdx';
 import NewsContent from '../content/home/news.mdx';
 import PubsContent from '../content/home/pubs.mdx';
+import MiscContent from '../content/home/misc.mdx';
 import InfoCard from '../components/info.astro';
 ---
 
@@ -21,5 +22,8 @@ import InfoCard from '../components/info.astro';
     </div>
     <div slot="pubs">
         <PubsContent components={ MDXComponents } />
+    </div>
+    <div slot="misc">
+        <MiscContent components={ MDXComponents } />
     </div>
 </Home>
