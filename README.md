@@ -1,6 +1,6 @@
 # Academic Page
 
-Built with ❤️ by Bolin Shen, using [Astro](https://astro.build).
+This page was created by Bolin and AI.
 
 ## Quick Start
 
@@ -19,4 +19,6 @@ astro: 5.2.3
 
 ## Acknowledgment
 
-This project is inspired by [Mia](https://github.com/infinity-ooo/astro-theme-mia). Special thanks to Mia for their valuable contributions and open-source efforts.
+This project is inspired by [Mia](https://github.com/infinity-ooo/astro-theme-mia) and powered by [Astro](https://astro.build). 
+
+Special thanks for their valuable contributions and open-source efforts.

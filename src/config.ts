@@ -16,6 +16,6 @@ export const MENUS = [
   }
 ];
 
-export const FOOTER_CONTENT = "Built with ❤️ by Bolin Shen";
+export const FOOTER_CONTENT = "This page is created by Bolin and AI.";
 
 export const GOOGLE_GTAG = "G-ET18GF988R";
