@@ -1,11 +1,31 @@
 @import "tailwindcss";
 
+:root {
+  /* orange: #c67d4a,
+     blue: #333366,
+     black: #000000 */
+  --link-color: #333366;
+  --link-hover-color: #c67d4a;
+  --heading-color: #000000;
+  --bold-color: #000000;
+  --selection-bg: #c67d4a;
+}
+
 html,
 body {
   width: 100vw;
   height: 100vh;
+  background-color: #fff;
   content-visibility: auto;
   -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--selection-bg);
+}
+
+::-moz-selection {
+  background: var(--selection-bg);
 }
 
 *:focus-visible {
@@ -25,7 +45,31 @@ svg.rough-annotation {
 }
 
 .link-invert a {
-  @apply text-slate-600 bg-white hover:invert;
+  @apply bg-white;
+  color: var(--link-color);
+}
+
+.link-invert a:hover {
+  color: var(--link-hover-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+}
+
+strong,
+b {
+  color: var(--bold-color);
+}
+
+a strong,
+a b {
+  color: inherit;
 }
 
 .shadow-black {
