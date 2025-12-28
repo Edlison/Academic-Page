@@ -1,9 +1,14 @@
 ---
 import Base from '../../layouts/base.astro';
+import { MDXComponents } from '../../components/mdx';
+import PubsContent from '../../content/home/pubs.mdx';
 ---
 
-<Base>
-    <div class="max-w-screen-lg mx-auto px-4 sm:px-6 py-8 link-invert">
-        <a href="/">cd ..</a>
-    </div>
+<Base title="Publications">
+  <div class="max-w-screen-lg mx-auto px-4 sm:px-6 py-8">
+    <h1 class="text-2xl font-bold mb-4">Publications</h1>
+    <ul class="space-y-2 list-disc list-inside">
+      <PubsContent components={MDXComponents} />
+    </ul>
+  </div>
 </Base>

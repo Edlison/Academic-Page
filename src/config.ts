@@ -6,14 +6,19 @@ export const SITE_DESCRIPTION = "Bolin Shen - Academic Page";
 export const MENUS = [
   {
     title: "Publications",
-    link: "/",
+    link: "/pubs",
+    target: "_self",
+  },
+  {
+    title: "CV",
+    link: "/cv",
     target: "_self",
   },
   {
     title: "Misc",
-    link: "/",
+    link: "/misc",
     target: "_self",
-  }
+  },
 ];
 
 export const FOOTER_CONTENT = "This page is created by Bolin and AI.";

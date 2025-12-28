@@ -54,6 +54,16 @@ svg.rough-annotation {
   color: var(--link-hover-color);
 }
 
+/* Header nav links: no white background (works with the frosted-glass header). */
+.nav-links a {
+  @apply bg-transparent;
+  color: var(--link-color);
+}
+
+.nav-links a:hover {
+  color: var(--link-hover-color);
+}
+
 h1,
 h2,
 h3,
