@@ -1,0 +1,80 @@
+/* Header brand hover animation (Letta-style: reveal trailing label + arrow on hover)
+ *
+ * Note: This file is intentionally NOT imported by default.
+ * To enable it later, import it from `src/styles/global.css` (or a layout):
+ *   @import "./brand-hover.css";
+ */
+
+.brand-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--heading-color);
+}
+
+.brand-title {
+  display: inline-block;
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    text-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 220ms ease;
+  will-change: transform;
+}
+
+.brand-reveal {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-6px);
+  color: var(--link-color);
+  transition:
+    max-width 260ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.brand-arrow {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-10px);
+  color: var(--link-color);
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.brand-link:hover .brand-title {
+  transform: translateY(-1px);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.brand-link:hover .brand-reveal {
+  max-width: 10ch;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.brand-link:hover .brand-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-title,
+  .brand-reveal,
+  .brand-arrow {
+    transition: none !important;
+    transform: none !important;
+  }
+  .brand-reveal {
+    max-width: none;
+    opacity: 1;
+  }
+  .brand-arrow {
+    opacity: 1;
+  }
+}
+

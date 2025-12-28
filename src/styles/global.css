@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./text-scramble.css";
 
 :root {
   /* orange: #c67d4a,

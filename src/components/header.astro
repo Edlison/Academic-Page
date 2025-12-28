@@ -6,10 +6,149 @@ import Menus from "./menus.astro";
 <header class="sticky z-50 top-0 bg-white/80 backdrop-blur-xl transition-all select-none">
   <div class="flex flex-row gap-8 items-center justify-between max-w-screen-lg mx-auto h-24 px-4 sm:px-6">
     <div class="flex flex-row gap-4">
-      <a href="/" class="flex flex-row items-center justify-center gap-2">
-        <span class="text-xl font-black no-invert">{SITE_TITLE}</span>
+      <a
+        href="/"
+        class="scramble-link flex flex-row items-center justify-center gap-2"
+        aria-label={SITE_TITLE}
+        data-scramble={SITE_TITLE}
+      >
+        <span class="sr-only">{SITE_TITLE}</span>
+        <span class="scramble-link__text text-xl font-black no-invert" aria-hidden="true">{SITE_TITLE}</span>
       </a>
     </div>
     <Menus />
   </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const CHARSET = "!@#$%^&*()_+-=[]{}|;:,.<>/?~";
+
+    const randomChar = () => CHARSET[(Math.random() * CHARSET.length) | 0];
+
+    const shuffleInPlace = (arr) => {
+      // Fisher–Yates
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = (Math.random() * (i + 1)) | 0;
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+
+    /**
+     * Scramble animation: on hover, briefly shows gibberish then resolves to original.
+     * We only update the aria-hidden span; the sr-only span keeps the accessible name stable.
+     */
+    const attach = (anchor) => {
+      if (!(anchor instanceof HTMLElement)) return;
+      if (anchor.dataset.scrambleInit === "1") return;
+      anchor.dataset.scrambleInit = "1";
+
+      const target = anchor.querySelector(".scramble-link__text");
+      if (!(target instanceof HTMLElement)) return;
+
+      const original = anchor.dataset.scramble ?? target.textContent ?? "";
+      const chars = Array.from(original);
+      let rafId = 0;
+      let startTime = 0;
+      let lastUpdate = 0;
+      let phase = 0;
+      /** @type {number[]} */
+      let order = [];
+      /** @type {number[]} */
+      let rank = [];
+      /** @type {Array<[string, string] | null>} */
+      let pairs = [];
+
+      const stop = () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = 0;
+        startTime = 0;
+        target.classList.remove("is-scrambling", "scramble-italic");
+        target.textContent = original;
+      };
+
+      const run = () => {
+        stop();
+        // slower + more deliberate
+        const durationMs = 500;
+        const updateIntervalMs = 50;
+        startTime = performance.now();
+        lastUpdate = 0;
+        phase = 0;
+
+        // Randomize reveal order per-run (NOT left-to-right).
+        const activeIndices = [];
+        for (let i = 0; i < chars.length; i++) {
+          if (chars[i] !== " ") activeIndices.push(i);
+        }
+        order = shuffleInPlace(activeIndices.slice());
+        rank = Array(chars.length).fill(-1);
+        for (let i = 0; i < order.length; i++) rank[order[i]] = i;
+
+        // For each character, pick exactly two random symbols to toggle between while "scrambling".
+        pairs = chars.map((ch) => (ch === " " ? null : [randomChar(), randomChar()]));
+        target.classList.add("is-scrambling");
+        target.classList.remove("scramble-italic");
+
+        const tick = (now) => {
+          const p = Math.min(1, (now - startTime) / durationMs);
+          const revealCount = Math.floor(p * (order.length + 1));
+
+          // Only re-randomize the visible scramble at a slower cadence.
+          if (!lastUpdate) lastUpdate = now;
+          if (now - lastUpdate < updateIntervalMs && p < 1) {
+            rafId = requestAnimationFrame(tick);
+            return;
+          }
+          lastUpdate = now;
+          phase++;
+
+          // While scrambling, toggle italic/normal on each update tick.
+          // (This affects the whole text, as requested.)
+          if (p < 1) target.classList.toggle("scramble-italic", (phase & 1) === 1);
+
+          let out = "";
+          for (let i = 0; i < chars.length; i++) {
+            const ch = chars[i];
+            if (ch === " ") {
+              out += " ";
+              continue;
+            }
+
+            // Reveal in randomized order: once a char is revealed, it stays as original.
+            if (rank[i] !== -1 && rank[i] < revealCount) {
+              out += ch;
+              continue;
+            }
+
+            // Scramble: only toggle between TWO pre-chosen symbols for this position.
+            const pair = pairs[i];
+            if (!pair) {
+              out += ch;
+              continue;
+            }
+            out += pair[(phase + i) & 1];
+          }
+          target.textContent = out;
+
+          if (p < 1) rafId = requestAnimationFrame(tick);
+          else {
+            rafId = 0;
+            target.classList.remove("is-scrambling", "scramble-italic");
+            target.textContent = original;
+          }
+        };
+
+        rafId = requestAnimationFrame(tick);
+      };
+
+      anchor.addEventListener("mouseenter", run);
+      anchor.addEventListener("focus", run);
+      anchor.addEventListener("mouseleave", stop);
+      anchor.addEventListener("blur", stop);
+    };
+
+    document.querySelectorAll('a.scramble-link[data-scramble]').forEach(attach);
+  })();
+</script>
