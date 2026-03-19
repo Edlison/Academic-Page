@@ -19,6 +19,11 @@ export const MENUS = [
     link: "/misc",
     target: "_self",
   },
+  {
+    title: "iid.sh↗",
+    link: "https://iid.sh",
+    target: "_blank",
+  },
 ];
 
 export const FOOTER_CONTENT = "This page is created by Bolin and AI.";
