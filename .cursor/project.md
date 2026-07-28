@@ -20,7 +20,7 @@
 ### Directory Responsibilities (High-level)
 - `astro.config.mjs`: Astro global config (site URL, prefetch, integrations, static output, Vite plugins, etc.)
 - `tailwind.config.cjs`: Tailwind content paths and theme extensions (fonts, etc.)
-- `public/`: static assets (e.g., `favicon.png`, `people.jpg`, `robots.txt`) served from the site root
+- `public/`: static assets (e.g., `favicon.png`, `blshen.jpg`, `robots.txt`) served from the site root
 - `src/`: site source code
   - `pages/`: route entries
   - `layouts/`: page layouts
@@ -35,7 +35,7 @@
 - `public/`
   - `avatar.png`
   - `favicon.png`
-  - `people.jpg`
+  - `blshen.jpg`
   - `robots.txt`
 - `src/`
   - `config.ts`
@@ -120,5 +120,4 @@
 
 ### Notes
 - `src/content/content.config.ts` is currently empty; this project does not use Astro Content Collections at the moment (MDX files are imported directly).
-
 
