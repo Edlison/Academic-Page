@@ -10,15 +10,15 @@ import { Section } from "@/components/section";
 export default function HomePage() {
   return (
     <div className="max-w-screen-lg mx-auto px-4 sm:px-6 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-y-8 md:grid-cols-[180px_minmax(0,1fr)] md:gap-x-18">
         <div className="flex flex-col items-center md:items-start space-y-4">
-          <div className="w-32 h-40 overflow-hidden rounded-lg shadow-black relative">
+          <div className="w-[180px] aspect-[5/6] overflow-hidden rounded-lg shadow-black relative">
             <Image
               alt="Avatar"
               className="object-cover"
               fill
               priority
-              sizes="128px"
+              sizes="180px"
               src="/blshen.jpg"
             />
           </div>
@@ -27,7 +27,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="col-span-2">
+        <div className="min-w-0">
           <h2 className="text-2xl font-bold mb-4">Bio</h2>
           <div>
             <BioContent />
