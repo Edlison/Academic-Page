@@ -1,5 +1,5 @@
 ---
-import { SITE_LOGO, SITE_TITLE } from "../config";
+import { SITE_TITLE } from "../config";
 import Menus from "./menus.astro";
 ---
 
@@ -13,7 +13,7 @@ import Menus from "./menus.astro";
         data-scramble={SITE_TITLE}
       >
         <span class="sr-only">{SITE_TITLE}</span>
-        <span class="scramble-link__text text-xl font-black no-invert" aria-hidden="true">{SITE_TITLE}</span>
+        <span class="scramble-link__text text-xl font-black" aria-hidden="true">{SITE_TITLE}</span>
       </a>
     </div>
     <Menus />

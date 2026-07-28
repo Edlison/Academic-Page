@@ -6,7 +6,6 @@ import BioContent from '../content/home/bio.mdx';
 import NewsContent from '../content/home/news.mdx';
 import PubsContent from '../content/home/pubs.mdx';
 import MiscContent from '../content/home/misc.mdx';
-import InfoCard from '../components/info.astro';
 ---
 
 <Home>
@@ -17,7 +16,6 @@ import InfoCard from '../components/info.astro';
         <BioContent components={ MDXComponents } />
     </div>
     <div slot="news">
-        <!-- <InfoCard title="Important" msg="This is important message!" /> -->
         <NewsContent components={ MDXComponents } />
     </div>
     <div slot="pubs">

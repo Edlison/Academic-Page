@@ -1,5 +1,4 @@
 export const SITE_FAVICON = "/favicon.png";
-export const SITE_LOGO = "/avatar.png";
 export const SITE_TITLE = "Bolin Shen";
 export const SITE_DESCRIPTION = "Bolin Shen - Academic Page";
 

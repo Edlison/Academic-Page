@@ -1,8 +1,17 @@
 ---
 const props = Astro.props;
-const className = [props.class, "text-blue-600 after:content-['_↗']"].filter(Boolean).join(" ");
+const external = props.href?.startsWith("http");
+const className = [props.class, "text-blue-600", external && "after:content-['_↗']"]
+  .filter(Boolean)
+  .join(" ");
 ---
 
-<a {...props} href={props.href} class={className} target="_blank" rel="noopener noreferrer">
+<a
+  {...props}
+  href={props.href}
+  class={className}
+  target={external ? "_blank" : props.target}
+  rel={external ? "noopener noreferrer" : props.rel}
+>
   <slot />
 </a>

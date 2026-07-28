@@ -1,29 +1,18 @@
 // MDX Components
 import Pub from "./pub.astro";
+import Ref from "./mdx/ref.astro";
 import A from "./mdx/a.astro";
 import Blockquote from "./mdx/blockquote.astro";
-import Br from "./mdx/br.astro";
-import Del from "./mdx/del.astro";
-import Em from "./mdx/em.astro";
 import H1 from "./mdx/h1.astro";
 import H2 from "./mdx/h2.astro";
 import H3 from "./mdx/h3.astro";
 import H4 from "./mdx/h4.astro";
 import H5 from "./mdx/h5.astro";
 import H6 from "./mdx/h6.astro";
-import Hr from "./mdx/hr.astro";
-import I from "./mdx/i.astro";
 import Img from "./mdx/img.astro";
 import Input from "./mdx/input.astro";
 import Li from "./mdx/li.astro";
-import Notation from "./mdx/notation.astro";
 import Ol from "./mdx/ol.astro";
-import P from "./mdx/p.astro";
-import Strong from "./mdx/strong.astro";
-import Table from "./mdx/table.astro";
-import Td from "./mdx/td.astro";
-import Th from "./mdx/th.astro";
-import Tr from "./mdx/tr.astro";
 import Ul from "./mdx/ul.astro";
 
 export const MDXComponents = {
@@ -33,7 +22,6 @@ export const MDXComponents = {
   h4: H4,
   h5: H5,
   h6: H6,
-  p: P,
   a: A,
   blockquote: Blockquote,
   img: Img,
@@ -41,19 +29,7 @@ export const MDXComponents = {
   ol: Ol,
   li: Li,
   input: Input,
-  table: Table,
-  tr: Tr,
-  th: Th,
-  td: Td,
-  strong: Strong,
-  em: Em,
-  i: I,
-  del: Del,
-  hr: Hr,
-  br: Br,
   // Custom Components
-  Notation,
-  N: Notation,
   Pub,
+  Ref,
 };
-

@@ -7,11 +7,14 @@ interface Props {
   codeUrl?: string;
 }
 
-const { name, conference, authors, pdfUrl = "https://blshen.org", codeUrl = "https://github.com/edlison" } = Astro.props;
-let formattedAuthors = authors;
-if (authors.includes("Bolin Shen")) {
-  formattedAuthors = authors.replace("Bolin Shen", `<strong>Bolin Shen</strong>`);
-}
+const {
+  name,
+  conference,
+  authors,
+  pdfUrl = "https://arxiv.org",
+  codeUrl = "https://github.com/LabRAI",
+} = Astro.props;
+const formattedAuthors = authors.replace("Bolin Shen", `<strong>Bolin Shen</strong>`);
 ---
 
 <div class="bg-white p-6 max-w-4xl mx-auto">

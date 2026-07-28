@@ -2,13 +2,13 @@
 import Base from '../../layouts/base.astro';
 import { MDXComponents } from '../../components/mdx';
 import MiscContent from '../../content/home/misc.mdx';
+import Section from '../../components/section.astro';
 ---
 
 <Base title="Misc">
   <div class="max-w-screen-lg mx-auto px-4 sm:px-6 py-8">
-    <h1 class="text-2xl font-bold mb-4">Misc</h1>
-    <ul class="space-y-2 list-disc list-inside">
+    <Section title="Misc" heading="h1">
       <MiscContent components={MDXComponents} />
-    </ul>
+    </Section>
   </div>
 </Base>

@@ -1,5 +1,6 @@
 ---
 import Base from "./base.astro";
+import Section from "../components/section.astro";
 ---
 
 <Base>
@@ -24,52 +25,16 @@ import Base from "./base.astro";
       </div>
     </div>
 
-    <!-- <div class="border-t border-gray-300 my-8"></div> -->
+    <Section title="News" class="mt-12">
+      <slot name="news" />
+    </Section>
 
-    <!-- Bottom Section: News -->
-    <div class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">News</h2>
-      <ul class="space-y-2 list-disc list-inside">
-        <slot name="news" />
-      </ul>
-    </div>
+    <Section title="Publications" class="mt-12">
+      <slot name="pubs" />
+    </Section>
 
-    <!-- <div class="border-t border-gray-300 my-8"></div> -->
-
-    <!-- Publications -->
-    <div class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">Publications</h2>
-      <ul class="space-y-2 list-disc list-inside">
-        <slot name="pubs" />
-      </ul>
-    </div>
-
-    <!-- Misc -->
-    <div class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">Misc</h2>
-      <ul class="space-y-2 list-disc list-inside">
-        <slot name="misc" />
-      </ul>
-    </div>
+    <Section title="Misc" class="mt-12">
+      <slot name="misc" />
+    </Section>
   </div>
 </Base>
-
-<!-- <script>
-import { annotate, annotationGroup } from "rough-notation";
-const notions = document.querySelectorAll("span[data-notion-identity]");
-const annotations = new Array(notions.length).fill(0).map((_, index) => {
-    const node = notions[index] as HTMLSpanElement;
-    const type = node.dataset.notionType;
-    const color = node.dataset.notionColor;
-    const strokeWidth = node.dataset.notionStrokewidth;
-    return annotate(node, {
-    type: (type as "underline") ?? "underline",
-    color: color ?? "red",
-    animate: false,
-    multiline: type === "bracket" ? false : true,
-    brackets: ["left", "right"],
-    strokeWidth: Number(strokeWidth) ?? 1.5,
-    });
-});
-annotationGroup(annotations).show();
-</script> -->

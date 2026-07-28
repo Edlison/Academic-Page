@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  heading?: "h1" | "h2";
+  class?: string;
+}
+
+const { title, heading = "h2", class: className } = Astro.props;
+---
+
+<section class={className}>
+  {
+    heading === "h1" ? (
+      <h1 class="text-2xl font-bold mb-4">{title}</h1>
+    ) : (
+      <h2 class="text-2xl font-bold mb-4">{title}</h2>
+    )
+  }
+  <div>
+    <slot />
+  </div>
+</section>
